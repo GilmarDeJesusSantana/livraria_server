@@ -1,6 +1,10 @@
+const { json } = require("express")
+const fs = require("fs")
+const { getTodosLivros } = require("../services/livro")
 function getLivros (req, res){
     try{
-        res.send('Olá Mundo! Tudo bem?')
+        const livros = getTodosLivros()
+        res.send(livros)
     }catch (error){
         res.status(500)
         res.send(error.message)
